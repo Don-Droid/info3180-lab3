@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block main %}
+    <h2>Contact Form</h2>
+    <hr>
+    <p>Fill out this form to contact the site owners.</p>
+    <form method="post" action="{{ url_for('contact') }}">
+        {% include 'flash_messages.html' %}
+        {{ form.csrf_token }}
+        <div class="form-group">
+            <p style="font-weight: bold;">Name <span style="color: red;">[required]</span></p>
+            {{ form.name.label }} {{ form.name(class="form-control") }}
+        </div>
+        <div class="form-group">
+            <p style="font-weight: bold;">E-mail <span style="color: red;">[required]</span></p>
+            {{ form.email.label }} {{ form.email(class="form-control", placeholder="jdoe@example.com") }}
+        </div>
+        <div class="form-group">
+            <p style="font-weight: bold;">Subject <span style="color: red;">[required]</span></p>
+            {{ form.subject.label }} {{ form.subject(class="form-control") }}
+        </div>
+        <div class="form-group">
+            <p style="font-weight: bold;">Message <span style="color: red;">[required]</span></p>
+            {{ form.message.label }} {{ form.message(class="form-control") }}
+        </div>
+    <button type="submit" class="btn btn-primary">Send</button>
+</form>
+{% endblock %}

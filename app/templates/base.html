@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Flask Starter App</title>
+    <title>Lab 3</title>
 
     <!-- Bootstrap -->
     <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
@@ -23,6 +23,17 @@
     <main>
         <div class="container">
             {% block main %}{% endblock %}
+        </div>
+        <div>
+          {% with messages = get_flashed_messages() %}
+          {% if messages %}
+          <ul class="flashes">
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+          </ul>
+            {% endif %}
+            {% endwith %}
         </div>
     </main>
     <footer>
